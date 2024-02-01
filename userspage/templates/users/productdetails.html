@@ -22,9 +22,10 @@
             <p><strong>Category:</strong>{{product.category}}</p>
             <p>{{product.product_description}}</p>
             <div className="my-3">
-                <button class="btn btn-success">
-                    Add to Cart
-                </button>
+                <a href="/addtocart/{{product.id}}"><button class="btn btn-warning">
+                        Add to Cart
+                    </button>
+                </a>
             </div>
         </div>
     </div>

@@ -2,11 +2,15 @@ from django.shortcuts import render, redirect
 from .models import Product, Category
 from .forms import ProductForm, CategoryForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from userspage.auth import admin_only
 
 # from django.http import HttpResponse
 # Create your views here.
 
 
+@login_required
+@admin_only
 def index(request):
     products = Product.objects.all()
     context = {"products": products}
@@ -14,6 +18,8 @@ def index(request):
     return render(request, "product/index.html", context)
 
 
+@login_required
+@admin_only
 def post_product(request):
     # to insert product
     if request.method == "POST":
@@ -29,6 +35,8 @@ def post_product(request):
     return render(request, "product/addproduct.html", context)
 
 
+@login_required
+@admin_only
 def post_category(request):
     # to show add category form
     if request.method == "POST":
@@ -44,6 +52,9 @@ def post_category(request):
     return render(request, "product/addcategory.html", context)
 
 
+# to see category
+@login_required
+@admin_only
 def show_category(request):
     category = Category.objects.all()
     context = {"category": category}
@@ -51,6 +62,8 @@ def show_category(request):
 
 
 # to delete category
+@login_required
+@admin_only
 def delete_category(request, category_id):
     category = Category.objects.get(id=category_id)
     category.delete()
@@ -59,6 +72,8 @@ def delete_category(request, category_id):
 
 
 # to delete prodcut
+@login_required
+@admin_only
 def delete_product(request, product_id):
     product = Product.objects.get(id=product_id)
     product.delete()
@@ -67,6 +82,8 @@ def delete_product(request, product_id):
 
 
 # to edit category
+@login_required
+@admin_only
 def update_category(request, category_id):
     instance = Category.objects.get(id=category_id)
     if request.method == "POST":
@@ -83,6 +100,8 @@ def update_category(request, category_id):
 
 
 # to edit product
+@login_required
+@admin_only
 def update_product(request, product_id):
     instance = Product.objects.get(id=product_id)
     if request.method == "POST":
