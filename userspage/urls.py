@@ -12,4 +12,7 @@ urlpatterns = [
     path("cart/", show_cart),
     path("deletecart/<int:cart_id>", delete_cart),
     path("postorder/<int:product_id>/<int:cart_id>", post_order),
+    path("myorder/", my_order),
+    path("esewa-form/", EsewaView.as_view(), name="esewaform"),
+    path("esewaverify/<int:order_id>/<int:cart_id>/", esewaVerify),
 ]

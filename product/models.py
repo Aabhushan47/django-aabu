@@ -37,7 +37,7 @@ class Order(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     quantity = models.IntegerField()
-    total_price = models.IntegerField
+    total_price = models.IntegerField(null=True)
     delivery_status = models.CharField(default="pending", max_length=255)
     payment_method = models.CharField(max_length=255, choices=PAYMENT)
     payment_status = models.BooleanField(default=False, null=True, blank=True)

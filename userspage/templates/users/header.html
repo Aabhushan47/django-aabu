@@ -30,13 +30,15 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="logout/">Sign out</a></li>
+                    <li><a class="dropdown-item" href="/logout">Sign out</a></li>
                 </ul>
             </div>
             <a href="#" class="btn btn-outline-dark mx-2">{{user.username}}</a>
+            <a href="/cart"><i class="fa-solid fa-cart-plus fa-xl" style="color: #000000;"></i></a>
+
 
             {% else %}
-            <a href="login/"><button class="btn btn-success">Login</button></a>
+            <a href="/login"><button class="btn btn-success">Login</button></a>
             <a href="/register"><button class="btn btn-success mx-3">Register</button></a>
             {% endif %}
 
